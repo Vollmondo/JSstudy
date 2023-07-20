@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: burlywood;
+}
+
+hr{
+    margin: 0;
+}
+
+main{
+    padding: 10px;
+    display: flex;
+}
+
+.rezult{
+    padding-right: 50px;
+    width: 800px;
+}
+
+.rezult_header{
+    width: 100% ;
+    margin-left: 50px;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+
+.rezult_header_1{
+    width: 33%;
+}
+
+.rezult_header_2{
+    width: 33%;
+}
+
+.rezult_header_3{
+    width: 33%;
+}
+
+#air-pollution{
+    width: 100%;
+    height: 250px;
+    margin-left: 50px;
+    overflow-y: scroll;
+}
+
+p{
+    margin: 2px 0 2px 5px;
+    font-size: 14pt;
+    text-align: center;
+}

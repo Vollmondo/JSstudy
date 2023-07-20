@@ -1,0 +1,48 @@
+<!--
+В созданом ранее репозитории нужно создать файлы index.html и scripts.js 
+2. В index.html сделать стандартную разметку текста, используя комбинацию клавиш в VS Code - > ! и затем нажать Tab. После чего у вас должен появиться стандартный шаблон для html страницы.
+3. Подключить scripts.js в файле index.html в конце файла, как это делается найдите в поиске.
+4. Далее создать тег 
+```
+ <div id="air-pollution"></div>
+```
+ 
+-->
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <div class="city_block">
+            <form id="city_selec_form">
+                <input class="city_select" id="city"  placeholder="Введите&nbsp;название&nbsp;города">
+                <button type="submit" class="city_btn" id="city_select_btn">Получить&nbsp;данные</button>
+            </form>
+        </div>
+        <div class="rezult">
+            <div class="rezult_header">
+                <div class="rezult_header_1">Время</div>
+                <div class="rezult_header_2">Содержание в воздухе частиц размером 2,5 μg/m³ (2,5 pm)</div>
+                <div class="rezult_header_3">Содержание в воздухе частиц размером 10 μg/m³ (10 pm)</div>
+            </div>
+            <div id="air-pollution">
+                <div id="air_pollution_dateTime" class="rezult_header_1"></div>
+                <div id="air_pollution_pm2_5" class="rezult_header_2"></div>
+                <div id="air_pollution_pm10" class="rezult_header_3"></div>
+            </div>
+        </div>
+    </main>
+    <script src="scripts.js"></script>
+    <!-- <pre id="air-pollution"></pre> -->
+</body>
+</html>
+
+
+
