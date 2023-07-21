@@ -26,18 +26,21 @@
                 <button type="submit" class="city_btn" id="city_select_btn">Получить&nbsp;данные</button>
             </form>
         </div>
-        <div class="rezult">
-            <div class="rezult_header">
-                <div class="rezult_header_1">Время</div>
-                <div class="rezult_header_2">Содержание в воздухе частиц размером 2,5 μg/m³ (2,5 pm)</div>
-                <div class="rezult_header_3">Содержание в воздухе частиц размером 10 μg/m³ (10 pm)</div>
+        <form id="rezult_form">
+            <div class="rezult">
+                <div class="rezult_header">
+                    <div class="rezult_header_1">Время</div>
+                    <div class="rezult_header_2">Содержание в воздухе частиц размером 2,5 μg/m³ (2,5 pm)</div>
+                    <div class="rezult_header_3">Содержание в воздухе частиц размером 10 μg/m³ (10 pm)</div>
+                </div>
+                <div id="air-pollution">
+                    <div id="air-pollution-dateTime" class="rezult_1"></div>
+                    <div id="air-pollution-pm2_5" class="rezult_2"></div>
+                    <div id="air-pollution-pm10" class="rezult_3"></div>
+                </div>
             </div>
-            <div id="air-pollution">
-                <div id="air_pollution_dateTime" class="rezult_header_1"></div>
-                <div id="air_pollution_pm2_5" class="rezult_header_2"></div>
-                <div id="air_pollution_pm10" class="rezult_header_3"></div>
-            </div>
-        </div>
+            <button type="button" onclick="clearForm()" class="button_clear_form">Очистить результаты</button>
+        </form>
     </main>
     <script src="scripts.js"></script>
     <!-- <pre id="air-pollution"></pre> -->
