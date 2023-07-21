@@ -69,7 +69,7 @@ document.getElementById("city_selec_form").addEventListener("submit", function(e
                     //console.log(air_pollution_dateTime)
                     return air_pollution_dateTime.map(function(air_pollution_dateTime_el){
                         air_pollution_dateTime_el = new Date(air_pollution_dateTime_el)
-                        const formattedDate = air_pollution_dateTime_el.toLocaleString('ru-Ru', {
+                        const formattedDate = air_pollution_dateTime_el.toLocaleString('ru-RU', {
                             day: '2-digit',
                             month: '2-digit',
                             year: 'numeric',
