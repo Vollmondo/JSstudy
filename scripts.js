@@ -217,6 +217,9 @@ document.getElementById("city_selec_form").addEventListener("submit", function(e
                         }]
                       };
 
+                    Chart.defaults.font.size = 14;
+                    Chart.defaults.color = '#000';
+  
                     // инициализируем графики
                     new Chart(ctx1, {
                         type: 'bar',
@@ -225,7 +228,22 @@ document.getElementById("city_selec_form").addEventListener("submit", function(e
                             plugins: {
                                 title: {
                                     display: true,
-                                    text: 'Среднесуточное содержание частиц в воздухе'}},
+                                    color:'rgb (0, 0, 0)',
+                                    font: {
+                                        size: 20
+                                    },
+                                    text: 'Среднесуточное содержание частиц в воздухе'
+                                },
+                                legend: {
+                                    labels: {
+                                        font: {
+                                            family: 'Arial',
+                                            size: 16
+                                            
+                                        }
+                                    }
+                                }
+                            },
                             scales: {
                                 y: {
                                     beginAtZero: true
@@ -241,10 +259,26 @@ document.getElementById("city_selec_form").addEventListener("submit", function(e
                             plugins: {
                                 title: {
                                     display: true,
-                                    text: 'Динамика изменения содержания частиц в воздухе'}},
+                                    color:'rgb (0, 0, 0)',
+                                    font: {
+                                        size: 20
+                                    },
+                                    text: 'Динамика изменения содержания частиц в воздухе'
+                                },
+                                legend: {
+                                    labels: {
+                                        font: {
+                                            family: 'Arial',
+                                            size: 16
+                                            
+                                        }
+                                    }
+                                }
+                                },
                             scales: {
                                 y: {
-                                    beginAtZero: true
+                                    beginAtZero: true,
+                                    
                                     },
                                 x:{
                                     offset: 100,
