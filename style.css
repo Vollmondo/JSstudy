@@ -15,10 +15,11 @@ main{
 
 #rezult_form{
     margin-left: 50px;
+    width: 800px;
 }
 
 .rezult{
-    width: 800px;
+    width: 100%;
     border: 2px solid black;
     border-radius: 4px;
 }
@@ -127,4 +128,36 @@ p{
     border-radius: 4px;
     text-align: center;
 
+}
+
+.dashboard{
+    display: none;
+}
+
+.dashboard:not(:empty){
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+}
+
+.charts:not(:empty){
+    display: flex;
+}
+
+.charts{
+    display: none
+}
+
+.chart_canvas:not(:empty){
+    display: contents;
+}
+
+.chart_canvas{
+    display: none;
+}
+
+.charts{
+    width: 100%;
 }

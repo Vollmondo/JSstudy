@@ -15,7 +15,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -39,8 +39,19 @@
                     <div id="air-pollution-pm10" class="rezult_3"></div>
                 </div>
             </div>
+            <div class="dashboard">
+                <div class="charts">
+                    <canvas id="Chart1" class="chart_canvas">Среднесуточное&nbsp;содержание&nbsp;частиц&nbsp;в&nbsp;воздухе</canvas>
+                </div>
+                <div class="charts">
+                    <canvas id="Chart2" class="chart_canvas">Динамика&nbsp;изменения&nbsp;содержания&nbsp;частиц&nbsp;в&nbsp;воздухе</canvas>
+                </div>
+                  
+                
+            </div>
             <button type="button" onclick="clearForm()" class="button_clear_form">Очистить результаты</button>
         </form>
+        
     </main>
     <script src="scripts.js"></script>
     <!-- <pre id="air-pollution"></pre> -->
