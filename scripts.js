@@ -91,12 +91,13 @@ document.getElementById("city_selec_form").addEventListener("submit", function(e
                     // Готовим исходную переменную с временем и датой, получаем числа для первого графика
                     let chart1_dateSetArrey = [];
                     let uniqueDates = {}; // объект для отслеживания уникальных дат
-                    for (let i = 0; i < air_pollution_dateTime.length; i++) {
+                    // for (let i = 0; i < air_pollution_dateTime.length; i++) {
+                    for (let i = 0; i < 72; i++) {
                         air_pollution_dateTime[i] = new Date(air_pollution_dateTime[i]);
                         const day = air_pollution_dateTime[i].getDate();
                         const month = air_pollution_dateTime[i].getMonth() + 1;
                         //собираем число в формате "дд.мм"
-                        const formattedDate = day.toString().padStart(2, "0") + "." + month.toString().padStart(2, "0");
+                        const formattedDate = air_pollution_dateTime[i].toLocaleString('ru', { weekday: 'short', day: 'numeric', month: 'long' });
                         // Проверяем, была ли уже встречена эта дата
                         if (!uniqueDates[formattedDate]) {
                             chart1_dateSetArrey.push(formattedDate);
@@ -186,19 +187,19 @@ document.getElementById("city_selec_form").addEventListener("submit", function(e
                 //Второй график
                     // Готовим исходную переменную с временем и датой, получаем числа для первого графика
                     let chart2_dateSetArrey = [];
-                    for (let i = 0; i < air_pollution_dateTime.length; i++) {
+                    // for (let i = 0; i < air_pollution_dateTime.length; i++) {
+                    for (let i = 0; i < 72; i++) {
                         air_pollution_dateTime[i] = new Date(air_pollution_dateTime[i]);
                         const day = air_pollution_dateTime[i].getDate();
                         const month = air_pollution_dateTime[i].getMonth() + 1;
                         const hour = air_pollution_dateTime[i].getHours();
                         //собираем число в формате "ЧЧ дд.мм"
-                        const formattedDate = hour.toString().padStart(2, "0") + ":00\n   \n" + day.toString().padStart(2, "0") + "." + month.toString().padStart(2, "0");
+                        const formattedDate = hour.toString().padStart(2, "0") + ":00,\n" + day.toString().padStart(2, "0") + "." + month.toString().padStart(2, "0");
                         
                         chart2_dateSetArrey.push(formattedDate);
                            
                         }
                     
-
                     // Собираем дата-сет для второго графика
                     const chart2_data = {
                         labels: chart2_dateSetArrey,
@@ -216,6 +217,7 @@ document.getElementById("city_selec_form").addEventListener("submit", function(e
                         }]
                       };
 
+                    // инициализируем графики
                     new Chart(ctx1, {
                         type: 'bar',
                         data: chart1_data,
@@ -247,85 +249,16 @@ document.getElementById("city_selec_form").addEventListener("submit", function(e
                                 x:{
                                     offset: 100,
                                     ticks: {
-                                        maxTicksLimit: 5, // Максимальное количество больших засечек
+                                        // maxTicksLimit: 5, // шаг оси х для поного пакета данных
+                                        maxTicksLimit: 6, // шаг оси х для  пакета данных на 3е суток
+
                                     }
                                 },
                             }
                         }})
                     });
-
-                    /*return air_pollution_dateTime.map(function(air_pollution_dateTime_el){
-                        air_pollution_dateTime_el = new Date(air_pollution_dateTime_el)
-                        const formattedDate = air_pollution_dateTime_el.toLocaleString('ru-RU', {
-                            day: '2-digit',
-                            month: '2-digit',
-                            year: 'numeric',
-                            hour: '2-digit',
-                            minute: '2-digit'
-                        });            
-                        let p = createNode('p');
-                        let hr = createNode('hr')
-                        p.innerHTML = `${formattedDate} `;                
-                        append(air_pollution_dateTime_div, p);
-                        append(air_pollution_dateTime_div, hr);
-                    })
                 })
-                fetch(API_OPEN_METEO)
-                    .then(response => response.json())
-                    .then(function(data_pm2_5) {
-                        let air_pollution_pm2_5 = data_pm2_5.hourly.pm2_5
-                        //console.log(air_pollution_pm2_5)
-                        return air_pollution_pm2_5.map(function(air_pollution_pm2_5_el){
-                            let p = createNode('p');
-                            let hr = createNode('hr')
-                            p.innerHTML = `${air_pollution_pm2_5_el} `;                
-                            append(air_pollution_pm2_5_div, p);
-                            append(air_pollution_pm2_5_div, hr);
-                        });
-                    })
-                    fetch(API_OPEN_METEO)
-                        .then(response => response.json())
-                        .then(function(data_pm10) {
-                            let air_pollution_pm10 = data_pm10.hourly.pm10
-                            //console.log(air_pollution_pm10)
-                            return air_pollution_pm10.map(function(air_pollution_pm10_el){
-                                let p = createNode('p');
-                                let hr = createNode('hr')
-                                p.innerHTML = `${air_pollution_pm10_el} `;                
-                                append(air_pollution_pm10_div, p);
-                                append(air_pollution_pm10_div, hr);
-                               
-                            });*/
-                        })
-        })
-        
-    
-
-    
-
-                /*let air_pollution = data.hourly;
-
-                    for (let i = 0; i < air_pollution.pm2_5.length; i++) {
-                    //console.log(`${air_pollution.pm2_5[i]} : ${air_pollution.pm10[i]} : ${air_pollution.time[i]}`)
-                    //let li = createNode('li');
-                    let p = createNode('p');
-                    let hr = createNode('hr')
-                    //p.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${air_pollution.time[i]} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${air_pollution.pm2_5[i]} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${air_pollution.pm10[i] ? air_pollution.pm10[i] : " "}`;                
-                    append(div, p);
-                    append(div, hr);
-                }})
-        
-                  
-            
-        
-        .catch(function(error) {
+        })  
+        /*.catch(function(error) {
             console.log(error);
-        });
-  });
-
-})*/
-
-
-
-
-    
+        });*/
