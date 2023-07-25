@@ -21,8 +21,8 @@ main{
 }
 
 #rezult_form{
-    margin-left: 50px;
-    width: 800px;
+    margin-left: 10px;
+    width: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -56,10 +56,8 @@ main{
 }
 
 #map{
-    margin-left: 3px;
-    min-width: 800px;
-    max-width: 800px;
-    height: 313px;
+    min-width: 600px;
+    height: 332px;
     border: 2px solid black;
 }
 
@@ -150,32 +148,29 @@ p{
 }
 
 .dashboard{
-    display: none;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-}
-
-.dashboard:not(:empty){
     display: flex;
-    width: 100%;
+    width: 600px;
     flex-wrap: wrap;
     border-left: 2px solid black;
     border-right: 2px solid black;
     border-bottom: 2px solid black;
 }
 
-.charts:not(:empty){
+.charts{
+    height: 300px;
     display: flex;
-}
-
-.chart_canvas:not(:empty){
-    display: contents;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 .chart_canvas{
-    display: none;
+    display: contents;
 }
 
 .charts{
     width: 100%;
+}
+
+.trd-block{
+    margin-left: 5px;
 }
