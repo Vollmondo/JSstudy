@@ -16,12 +16,10 @@ function clearForm() {
 
     ctx1.remove();
     ctx2.remove();
-
     ctx1 = ctx1.getContext('2d');
     ctx1.clearRect(0, 0, 800, 400);
     ctx2 = ctx2.getContext('2d');
     ctx2.clearRect(0, 0, 800, 400);
-
     ctx1 = createNode('canvas');
     ctx1.setAttribute('id', 'Chart1');
     ctx1.setAttribute('class', 'chart_canvas');
@@ -30,6 +28,9 @@ function clearForm() {
     ctx2.setAttribute('id', 'Chart2');
     ctx2.setAttribute('class', 'chart_canvas');
     append(chart2_div, ctx2);
+    
+    map.setView([0, 0], 1);
+    map.removeLayer(marker);
 
 }
 
@@ -43,6 +44,9 @@ let ctx1 = document.getElementById('Chart1');
 let ctx2 = document.getElementById('Chart2');
 const chart1_div = document.getElementById('chart1-div');
 const chart2_div = document.getElementById('chart2-div');
+let map = L.map('map', {center: [0, 0], zoom: 1})
+let marker = L.marker([], {draggable:true});
+L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
 //в переменную place_name передать название любого города
 document.getElementById("city_selec_form").addEventListener("submit", function(event) {
@@ -58,6 +62,7 @@ document.getElementById("city_selec_form").addEventListener("submit", function(e
         .then(function(data_yandex){
             let coordinates = (data_yandex.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos).split(' ')
             //console.log(coordinates)
+            
             const API_OPEN_METEO = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${coordinates[1]}&longitude=${coordinates[0]}&hourly=pm10,pm2_5`
             fetch(API_OPEN_METEO)
                 .then(response => response.json())
@@ -311,8 +316,17 @@ document.getElementById("city_selec_form").addEventListener("submit", function(e
                             }
                         }})
                     });
-                })
+
+            map.setView([coordinates[1], coordinates[0]], 10);
+            
+            marker = L.marker([coordinates[1], coordinates[0]])
+                .bindPopup(`${place_name}`)
+                .addTo(map);
+            
+
+            })
         })  
+
         /*.catch(function(error) {
             console.log(error);
         });*/
