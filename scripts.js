@@ -9,20 +9,40 @@ function clearForm() {
     let dateTimeDiv = document.getElementById("air-pollution-dateTime");
     let pm2_5Div = document.getElementById("air-pollution-pm2_5");
     let pm10Div = document.getElementById("air-pollution-pm10");
-  
-    dateTimeDiv.innerHTML = "";
-    pm2_5Div.innerHTML = "";
-    pm10Div.innerHTML = "";
+
+    dateTimeDiv.innerHTML = '';
+    pm2_5Div.innerHTML = '';
+    pm10Div.innerHTML = '';
+
+    ctx1.remove();
+    ctx2.remove();
+
+    ctx1 = ctx1.getContext('2d');
+    ctx1.clearRect(0, 0, 800, 400);
+    ctx2 = ctx2.getContext('2d');
+    ctx2.clearRect(0, 0, 800, 400);
+
+    ctx1 = createNode('canvas');
+    ctx1.setAttribute('id', 'Chart1');
+    ctx1.setAttribute('class', 'chart_canvas');
+    append(chart1_div, ctx1);
+    ctx2 = createNode('canvas');
+    ctx2.setAttribute('id', 'Chart2');
+    ctx2.setAttribute('class', 'chart_canvas');
+    append(chart2_div, ctx2);
 
 }
+
+
 
 //const div = document.getElementById('air-pollution');
 const air_pollution_dateTime_div= document.getElementById('air-pollution-dateTime');
 const air_pollution_pm2_5_div= document.getElementById('air-pollution-pm2_5')
 const air_pollution_pm10_div= document.getElementById('air-pollution-pm10')
-const ctx1 = document.getElementById('Chart1');
-const ctx2 = document.getElementById('Chart2');
-
+let ctx1 = document.getElementById('Chart1');
+let ctx2 = document.getElementById('Chart2');
+const chart1_div = document.getElementById('chart1-div');
+const chart2_div = document.getElementById('chart2-div');
 
 //в переменную place_name передать название любого города
 document.getElementById("city_selec_form").addEventListener("submit", function(event) {
