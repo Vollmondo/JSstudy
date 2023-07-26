@@ -9,6 +9,18 @@ hr{
     margin: 0;
 }
 
+.header{
+    height: 100px;
+}
+
+.logo-div{
+    margin: 10px;
+}
+
+.logo{
+    height: 100px;
+}
+
 main{
     padding: 10px;
     display: flex;
