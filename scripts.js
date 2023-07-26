@@ -320,7 +320,7 @@ document.getElementById("city_selec_form").addEventListener("submit", function(e
             map.setView([coordinates[1], coordinates[0]], 10);
             
             marker = L.marker([coordinates[1], coordinates[0]])
-                .bindPopup(`${place_name}`)
+                .bindPopup(`${place_name}`.toUpperCase())
                 .addTo(map);
             
 
