@@ -55,7 +55,7 @@ main{
 }
 
 #map{
-    min-width: 600px;
+    min: 600px;
     height: 332px;
     border: 2px solid black;
 }
@@ -171,4 +171,220 @@ p{
 
 .trd-block{
     margin-left: 5px;
+}
+
+
+@media screen and (max-device-width: 500px){
+	
+    html{
+        margin: 0;
+        padding: 0;
+    }
+    
+    body{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 100%;
+    }
+
+    main{
+        padding: 10px 0 0 0;
+        width: 98%;
+    }
+
+    .conteiner{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 100%;
+    }
+
+    #rezult_form{
+        max-width: 98%;
+        font-size: 12pt;
+        margin: 5px 0 0 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .dashboard:not(:empty) {
+        max-width: 100%;
+        margin: 0;
+	}
+	
+    .city_block{
+        max-width: 100%;
+    }
+
+    .city_btn, .button_clear_form, .city_select{
+        margin: 0 0 2 0;
+        padding: 0;
+        max-width: 100%;
+    }
+
+    .rezult_header{
+        font-size: 10pt;
+    }
+
+    .rezult_header_1{
+        padding: 35px 0;
+    }
+
+    .trd-block{
+        width: 100%;
+        margin: 0;
+        display: none;
+    }
+
+	#map {
+		display: none;
+	}
+
+    p{
+        font-size: 8pt;
+    }
+
+    .charts:not(:empty){
+        height: auto;
+    }
+
+    .chart_canvas{
+        height: 0;
+    }
+}
+
+@media screen and (min-device-width: 750px) and (max-device-width: 1022px){
+	
+	html{
+        margin: 0;
+        padding: 0;
+    }
+    
+    body{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 100%;
+    }
+
+    main{
+        padding: 10px 0 0 0;
+        width: 98%;
+    }
+
+    .conteiner{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 100%;
+    }
+
+    #map{
+        display: none;
+    }
+
+    #rezult_form{
+        margin: 5px 0 0 0;
+    }
+
+    .trd-block{
+        margin: 0;
+    }
+
+    .charts:not(:empty){
+        height: fit-content;
+        max-height: 300px;
+    }
+
+    .chart_canvas{
+        height: 0;
+    }
+
+    .footer{
+        margin-top: 10px;
+    }
+}
+
+
+@media screen and (min-device-width: 1023px) and (max-device-width: 1200px){
+	
+	html{
+        margin: 0;
+        padding: 0;
+    }
+    
+    body{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 100%;
+    }
+
+    main{
+        padding: 10px 0 0 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .conteiner{
+        display: flex;
+        max-width: 100%;
+    }
+
+    .city_block{
+        max-width: 190px;
+    }
+
+    .city_btn, .button_clear_form, .city_select{
+        margin: 0 0 2 0;
+        padding: 0;
+        max-width: 100%;
+    }
+
+    #rezult_form{
+        width: 400px;
+    }
+
+    .trd-block{
+        width: 400px;
+    }
+
+    .dashboard:not(:empty){
+        width: 400px;
+    }
+
+    .charts:not(:empty){
+        width: 400px;
+    }
+
+    .rezult{
+        height: 400px;
+    }
+
+    .rezult_header{
+        font-size: 12pt;
+    }
+
+    .rezult_header_1{
+        padding: 40px 0;
+    }
+
+
+	#map {
+		height: 400px;
+        width: 400px;
+	}
+
+    p{
+        font-size: 10pt;
+    }
+
 }
