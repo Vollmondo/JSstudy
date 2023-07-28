@@ -9,6 +9,10 @@
     transition: transform 0.6s ease;
   }
 
+  .slider__item-wrapper{
+    height: 450px;;
+}
+
   .slider__item {
     flex: 0 0 100%;
     max-width: 100%;

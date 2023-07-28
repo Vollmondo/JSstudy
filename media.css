@@ -1,0 +1,190 @@
+@media screen and (max-device-width: 500px){
+	
+    html{
+        margin: 0;
+        padding: 0;
+    }
+    
+    body{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 100%;
+    }
+
+    main{
+        padding: 10px 0 0 0;
+        width: 98%;
+    }
+
+    .conteiner{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 100%;
+    }
+
+    .city_block{
+        max-width: 100%;
+    }
+
+    .city_btn, .button_clear_form, .city_select{
+        margin: 0 0 2 0;
+        padding: 0;
+        max-width: 100%;
+    }
+
+    .rezult {
+        margin-left: 10px;
+        margin-right: 10px;
+        height: 450px;
+    }
+
+    #air-pollution{
+        height: 360px;
+    }
+
+    .rezult_header{
+        font-size: 10pt;
+        height: auto;
+    }
+
+    .rezult_header_1{
+        padding: 35px 0;
+    }
+
+    .slider {
+        margin-left: 0;
+        margin-top: 5px;
+      }
+
+    p{
+        font-size: 8pt;
+    }
+
+    .slider__control {
+        width: auto;
+    }
+
+    .charts{
+        margin: 120px 0;
+    }
+
+    .chart_canvas{
+        transform: rotate(90deg);
+        height: 400px;
+        width: 800px;
+    }
+
+}
+
+@media screen and (min-device-width: 750px) and (max-device-width: 1022px){
+	
+	html{
+        margin: 0;
+        padding: 0;
+    }
+    
+    body{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 100%;
+    }
+
+    main{
+        padding: 10px 0 0 0;
+        width: 98%;
+    }
+
+    .slider {
+        margin-left: 0;
+        margin-top: 5px;
+      }
+
+    .slider__item-wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .rezult_header{
+        font-size: 10pt;
+        height: auto;
+    }
+
+    .conteiner{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .slider__control {
+        width: auto;
+    }
+
+    .footer{
+        margin-top: 10px;
+    }
+}
+
+
+@media screen and (min-device-width: 1023px) and (max-device-width: 1200px){
+	
+	html{
+        margin: 0;
+        padding: 0;
+    }
+    
+    body{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 1020px;
+    }
+
+    main{
+        padding: 10px 0 0 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .conteiner{
+        display: flex;
+        max-width: 100%;
+    }
+
+    .city_btn, .button_clear_form, .city_select{
+        margin: 0 0 2 0;
+        padding: 0;
+        max-width: 100%;
+    }
+
+    .slider{
+        margin-right: 5px;
+    }
+
+    .slider__control {
+        width: 25px;
+    }
+    
+    .rezult{
+        height: 450px;
+    }
+ 
+    .rezult_header{
+        font-size: 12pt;
+    }
+
+    p{
+        font-size: 10pt;
+    }
+
+}
