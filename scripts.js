@@ -50,14 +50,19 @@ let baseLayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
 let layers = {
     'OpenStreetMaps': L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'),
     'Wikimapia': new L.tileLayer('http://{s}{hash}.wikimapia.org/?x={x}&y={y}&zoom={z}&r=7071412&type=&lng=1', {hash: function (data) {return data.x % 4 + (data.y % 4) *4;}, subdomains : 'i' , maxZoom: 20}),
-    'Спутник': L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}')
+    'Спутник': L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'),
+    'Подложка': L.tileLayer('https://server.arcgisonline.com/arcgis/rest/services/Elevation/World_Hillshade/MapServer/tile/{z}/{y}/{x}')
 }
 let overlays = {
-    'Состояние воздуха': L.tileLayer('https://osm.airvisual.net/pm25_layer/{z}/{x}/{y}.webp', {
+    'PM<sub>2.5</sub> + PM<sub>10</sub>': L.tileLayer('https://osm.airvisual.net/pm25_layer/{z}/{x}/{y}.webp', {
         use_norm : true,
         arrow_step : 16,
         attribution: '<div style="font-family: Arial,sans-serif; font-size: 10px; padding: 0; float: right; margin-bottom: 30px; border-width: 0px; margin-right: 10px; width: 370px; height: 27px;"><div>Содержание вредных частиц</div><div style="display: flex; -webkit-box-align: center; align-items: center; padding: 2pt 4pt; background-color: #fff; border-radius: 4pt; box-shadow: 0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24); transition: box-shadow .1s ease-out,-webkit-box-shadow .1s ease-out; -webkit-box-pack: justify; justify-content: space-between; font-size: 10px; margin-bottom: 0;"><div style="width: 360px;"><div style="box-sizing: border-box; display: flex; width: 100%; -webkit-box-pack: justify; justify-content: space-between;"><div><br>Норма</div><div>Незначительное<br>превышение</div><div>Выше<br>среднего</div><div><br>Высокое</div><div>Очень<br>высокое</div><div><br>Опасное</div></div><div class="horizontal-gradient-line" style="width: 360px; background: linear-gradient(to right, rgba(255, 255, 0, 0), rgb(156, 216, 78), rgb(250, 207, 57), rgb(249, 144, 73), rgb(246, 94, 95), rgb(160, 112, 182), rgb(160, 106, 123), rgb(116, 74, 87));-webkit-text-size-adjust: 100%;-webkit-box-direction: normal; box-sizing: border-box; border-radius: 4pt; height: 4px; opacity: .9; width: 360px; border-left: 1px solid #f2f2f2; border-bottom: 1px solid #f2f2f2;"></div></div></div></div>'}
-    )
+    ),
+    'NO<sub>2</sub>': L.tileLayer('https://earthengine.googleapis.com/v1/projects/earthengine-legacy/maps/8514f17c4e9ab6baa55141d43703e691-ddfb898bae16f9da573e14d8b23ad52e/tiles/{z}/{x}/{y}',{
+        opacity:0.4,
+        attribution: '<div style="font-family: Arial,sans-serif; font-size: 10px; padding: 0; float: right; margin-bottom: 30px; border-width: 0px; margin-right: 10px; width: 370px; height: 27px;"><div>Содержание вредных частиц</div><div style="display: flex; -webkit-box-align: center; align-items: center; padding: 2pt 4pt; background-color: #fff; border-radius: 4pt; box-shadow: 0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24); transition: box-shadow .1s ease-out,-webkit-box-shadow .1s ease-out; -webkit-box-pack: justify; justify-content: space-between; font-size: 10px; margin-bottom: 0;"><div style="width: 360px;"><div style="box-sizing: border-box; display: flex; width: 100%; -webkit-box-pack: justify; justify-content: space-between;"><div><br>Норма</div><div>Незначительное<br>превышение</div><div>Выше<br>среднего</div><div><br>Высокое</div><div>Очень<br>высокое</div><div><br>Опасное</div></div><div class="horizontal-gradient-line" style="width: 360px; background: linear-gradient(to right, rgba(255, 255, 0, 0), rgb(132, 140, 255), rgb(24, 5, 249), rgb(131, 62, 134), rgb(254, 126, 0), rgb(211, 3, 0), rgb(122, 2, 2), rgb(61, 3, 3));-webkit-text-size-adjust: 100%;-webkit-box-direction: normal; box-sizing: border-box; border-radius: 4pt; height: 4px; opacity: .9; width: 360px; border-left: 1px solid #f2f2f2; border-bottom: 1px solid #f2f2f2;"></div></div></div></div>'
+    }),
 }
 L.control.layers(layers, overlays).addTo(map);
 

@@ -15,10 +15,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="slider.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+    <script src="slider.js" defer></script>
+    
     <title>Document</title>
 </head>
 <body>
@@ -33,40 +35,53 @@
                     <button type="submit" class="city_btn" id="city_select_btn">Получить&nbsp;данные</button>
                 </form>
                 <button type="button" onclick="clearForm()" class="button_clear_form">Очистить результаты</button>
-
+                
             </div>
-            <form id="rezult_form">
-                <div class="rezult">
-                    <div class="rezult_header">
-                        <div class="rezult_header_1">Время</div>
-                        <div class="rezult_header_2">Содержание в воздухе частиц размером 2,5 μg/m³ (2,5 pm)</div>
-                        <div class="rezult_header_3">Содержание в воздухе частиц размером 10 μg/m³ (10 pm)</div>
+            <div class="slider">
+                <div class="slider__wrapper">
+                    <div class="slider__item">
+                        <div id="map" style="height: 450px;"></div>
                     </div>
-                    <div id="air-pollution">
-                        <div id="air-pollution-dateTime" class="rezult_1"></div>
-                        <div id="air-pollution-pm2_5" class="rezult_2"></div>
-                        <div id="air-pollution-pm10" class="rezult_3"></div>
+                    <div class="slider__item">
+                        <div style="height: 450px;">
+                            <div class="rezult">
+                                <div class="rezult_header">
+                                    <div class="rezult_header_1">Время</div>
+                                    <div class="rezult_header_2">Содержание в воздухе частиц размером 2,5 μg/m³ (PM<sub>2.5</sub>)</div>
+                                    <div class="rezult_header_3">Содержание в воздухе частиц размером 10 μg/m³ (PM<sub>10</sub>)</div>
+                                </div>
+                                <div id="air-pollution">
+                                    <div id="air-pollution-dateTime" class="rezult_1"></div>
+                                    <div id="air-pollution-pm2_5" class="rezult_2"></div>
+                                    <div id="air-pollution-pm10" class="rezult_3"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider__item">
+                        <div style="height: 450px;">
+                            <div id="chart1-div" class="charts">
+                                <canvas id="Chart1" class="chart_canvas"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider__item">
+                        <div style="height: 450px;">
+                            <div id="chart2-div" class="charts">
+                                <canvas id="Chart2" class="chart_canvas" style="width: 100%;"></canvas>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="dashboard">
-                    <div id="chart1-div" class="charts">
-                        <canvas id="Chart1" class="chart_canvas"></canvas>
-                    </div>
-                    <!--<div id="chart2-div" class="charts">
-                        <canvas id="Chart2" class="chart_canvas"></canvas>
-                    </div>-->
-                </div>
-            </form>
-            <div class="trd-block">
-                <div id="map"></div>
-                <div class="dashboard">
-                    <div id="chart2-div" class="charts">
-                        <canvas id="Chart2" class="chart_canvas"></canvas>
-                    </div>
-                </div>
-            </div>    
+                <a class="slider__control slider__control_left" href="#" role="button"></a>
+                <a class="slider__control slider__control_right slider__control_show" href="#" role="button"></a>
+            </div>
         </div>
+        
     </main>
+
+    
+    
     <div class="footer">
         <p>lorem ipsum&#169; 2023</p>
     </div>

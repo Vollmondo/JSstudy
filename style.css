@@ -1,8 +1,18 @@
-body, html {
+html{
     margin: 0;
     padding: 0;
     background-color: burlywood;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: burlywood;
+    height: 100vh;
+    width: 1200px;
 }
 
 hr{
@@ -24,7 +34,7 @@ hr{
 main{
     padding: 10px;
     display: flex;
-    min-height: 94%;
+    height: 90%;
 }
 
 .conteiner{
@@ -32,21 +42,19 @@ main{
     height: fit-content;
 }
 
-#rezult_form{
-    margin-left: 10px;
-    width: 600px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.city_block{
+    width: 170px;
 }
 
 
 .rezult{
-    width: 100%;
+    margin-left: 70px;
+    margin-right: 70px;
     border: 2px solid black;
 }
 
 .rezult_header{
+    height: 60px;
     width: 100% ;
     display: flex;
     flex-direction: row;
@@ -67,8 +75,9 @@ main{
 }
 
 #map{
-    width: 600px;
-    height: 332px;
+    
+    height: 450px;
+    width: 95%;
     border: 2px solid black;
 }
 
@@ -81,7 +90,7 @@ main{
 
 #air-pollution{
     width: 100%;
-    height: 250px;
+    height: 385px;
     overflow-y: scroll;
     display: flex;
 }
@@ -158,31 +167,11 @@ p{
 
 }
 
-.dashboard:not(:empty){
-    display: flex;
-    height: fit-content;
-    width: 600px;
-    flex-wrap: wrap;
-    border-left: 2px solid black;
-    border-right: 2px solid black;
-    border-bottom: 2px solid black;
-}
-
-.charts:not(:empty){
-    height: fit-content;
-    max-height: 300px;
-    display: flex;
+.charts{
     width: 100%;
-    flex-direction: column;
-    justify-content: flex-end;
-}
-
-.chart_canvas{
-    height: 0;
-}
-
-.trd-block{
-    margin-left: 5px;
+    max-height: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 
@@ -222,11 +211,6 @@ p{
         justify-content: center;
     }
 
-    .dashboard:not(:empty) {
-        max-width: 100%;
-        margin: 0;
-	}
-	
     .city_block{
         max-width: 100%;
     }
@@ -245,12 +229,6 @@ p{
         padding: 35px 0;
     }
 
-    .trd-block{
-        width: 100%;
-        margin: 0;
-        display: none;
-    }
-
 	#map {
 		display: none;
 	}
@@ -259,13 +237,10 @@ p{
         font-size: 8pt;
     }
 
-    .charts:not(:empty){
+    .charts{
         height: auto;
     }
 
-    .chart_canvas{
-        height: 0;
-    }
 }
 
 @media screen and (min-device-width: 750px) and (max-device-width: 1022px){
@@ -293,7 +268,6 @@ p{
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        max-width: 100%;
     }
 
     #map{
@@ -304,17 +278,9 @@ p{
         margin: 5px 0 0 0;
     }
 
-    .trd-block{
-        margin: 0;
-    }
-
-    .charts:not(:empty){
+    .charts{
         height: fit-content;
         max-height: 300px;
-    }
-
-    .chart_canvas{
-        height: 0;
     }
 
     .footer{
@@ -365,15 +331,7 @@ p{
         width: 400px;
     }
 
-    .trd-block{
-        width: 400px;
-    }
-
-    .dashboard:not(:empty){
-        width: 400px;
-    }
-
-    .charts:not(:empty){
+    .charts{
         width: 400px;
     }
 
