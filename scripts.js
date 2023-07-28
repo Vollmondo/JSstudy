@@ -44,6 +44,7 @@ let ctx1 = document.getElementById('Chart1');
 let ctx2 = document.getElementById('Chart2');
 const chart1_div = document.getElementById('chart1-div');
 const chart2_div = document.getElementById('chart2-div');
+
 let map = L.map('map', {center: [0, 0], zoom: 1})
 let marker = L.marker([], {draggable:true});
 let baseLayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
@@ -66,21 +67,28 @@ let overlays = {
 }
 L.control.layers(layers, overlays).addTo(map);
 
+map.on('click', function(e) {
+    let coordinates = [e.latlng.lat, e.latlng.lng]
+    console.log(coordinates)
+}); 
+
 //в переменную place_name передать название любого города
 document.getElementById("city_selec_form").addEventListener("submit", function(event) {
     event.preventDefault(); // Отменяем отправку формы
     
     let place_name = document.getElementById("city").value;
     //console.log(place_name)
+    
     const API_KEY_YANDEX = '85eaff1b-ef9e-4c11-89bc-ca01d1ae43de'
     const API_URL_GEO_DATA = `https://geocode-maps.yandex.ru/1.x/?apikey=${API_KEY_YANDEX}&geocode=${place_name}&format=json`
     fetch(API_URL_GEO_DATA)
         .then(response => response.json())
         //.then(response => console.log(response.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos))
+        
         .then(function(data_yandex){
-            let coordinates = (data_yandex.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos).split(' ')
+            coordinates = (data_yandex.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos).split(' ')
             //console.log(coordinates)
-            
+        
             const API_OPEN_METEO = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${coordinates[1]}&longitude=${coordinates[0]}&hourly=pm10,pm2_5`
             fetch(API_OPEN_METEO)
                 .then(response => response.json())
@@ -333,6 +341,7 @@ document.getElementById("city_selec_form").addEventListener("submit", function(e
                                 },
                             }
                         }})
+                        
                     });
             
             map.setView([coordinates[1], coordinates[0]], 10);
