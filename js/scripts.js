@@ -274,24 +274,6 @@ function onMapButtonListener(){
 
 function meteo_chart(){
     
-    function Meteogram(json, meteo) {
-        // Parallel arrays for the chart data, these are populated as the JSON file
-        // is loaded
-        this.symbols = [];
-        this.precipitations = [];
-        this.precipitationsError = []; // Only for some data sets
-        this.winds = [];
-        this.temperatures = [];
-        this.pressures = [];
-
-        // Initialize
-        this.json = json;
-        this.meteo = meteo;
-
-        // Run
-        this.parseYrData();
-    }
-
     Highcharts.setOptions({
         lang: {
             months: [
@@ -305,13 +287,6 @@ function meteo_chart(){
             ]
         }
     });
-
-    /**
-     * Mapping of the symbol code in yr.no's API to the icons in their public
-     * GitHub repo, as well as the text used in the tooltip.
-     *
-     * https://api.met.no/weatherapi/weathericon/2.0/documentation
-     */
     Meteogram.dictionary = {
         clearsky: {
             symbol: '01',
@@ -478,15 +453,27 @@ function meteo_chart(){
             text: 'Туман'
         }
     };
+    function Meteogram(json, meteo) {
+        // Parallel arrays for the chart data, these are populated as the JSON file
+        // is loaded
+        this.symbols = [];
+        this.precipitations = [];
+        this.precipitationsError = []; // Only for some data sets
+        this.winds = [];
+        this.temperatures = [];
+        this.pressures = [];
 
-    /**
-     * Draw the weather symbols on top of the temperature series. The symbols are
-     * fetched from yr.no's MIT licensed weather symbol collection.
-     * https://github.com/YR/weather-symbols
-     */
+        // Initialize
+        this.json = json;
+        this.meteo = meteo;
+
+        // Run
+        this.parseYrData();
+    }
+    
     Meteogram.prototype.drawWeatherSymbols = function (chart) {
-
-        chart.series[0].data.forEach((point, i) => {
+        meteo_data = chart.series[0].data
+        meteo_data.forEach((point, i) => {
             if (this.resolution > 36e5 || i % 2 === 0) {
 
                 const [symbol, specifier] = this.symbols[i].split('_'),
@@ -512,12 +499,11 @@ function meteo_chart(){
                 }
             }
         });
+        console.log(meteo_data)
+
     };
+    
 
-
-    /**
-     * Draw blocks around wind arrows, below the plot area
-     */
     Meteogram.prototype.drawBlocksForWindArrows = function (chart) {
         const xAxis = chart.xAxis[0];
 
@@ -835,8 +821,9 @@ function meteo_chart(){
         this.chart = new Highcharts.Chart(this.getChartOptions(), chart => {
             this.onChartLoad(chart);
         });
-    };
 
+    };
+    
     Meteogram.prototype.error = function () {
         document.getElementById('loading').innerHTML =
             '<i class="fa fa-frown-o"></i> Failed loading data, please try again later';
@@ -848,6 +835,7 @@ function meteo_chart(){
      */
     Meteogram.prototype.parseYrData = function () {
     console.log("hi")
+    
         let pointStart;
 
         if (!this.json) {
@@ -905,15 +893,9 @@ function meteo_chart(){
         // Create the chart when the data is loaded
         this.createChart();
     };
-    // End of the Meteogram protype
-
-
-    // On DOM ready...
-
-    // Set the hash to the yr.no URL we want to parse
+ 
     if (!location.hash) {
-        //location.hash = 'https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${coordinates[1]}&lon=${coordinates[0]}';
-        location.hash = 'https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=60.10&lon=9.58';
+        location.hash = `https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${coordinates[1]}&lon=${coordinates[0]}`;
 
     }
     const url = location.hash.substr(1);
@@ -925,8 +907,6 @@ function meteo_chart(){
         },
         error: Meteogram.prototype.error,
         headers: {
-            // Override the Content-Type to avoid preflight problems with CORS
-            // in the Highcharts demos
             'Content-Type': 'text/plain'
         }
     });
@@ -960,6 +940,9 @@ function clearForm() {
     map.removeLayer(marker);
     markerCount = 0;
 
+    //сброс графика highcharts
+    let meteoDiv = document.getElementById("meteo");
+    meteoDiv.innerHTML = '';
 }
 
 function addLabels(coordinates) {
@@ -997,6 +980,7 @@ let ctx1 = document.getElementById('Chart1');
 let ctx2 = document.getElementById('Chart2');
 const chart1_div = document.getElementById('chart1-div');
 const chart2_div = document.getElementById('chart2-div');
+let meteo_data = [];
 let coordinates = [];
 let map = L.map('map', {center: [0, 0], zoom: 1})
 let marker = L.marker([], {draggable:true});
@@ -1316,7 +1300,7 @@ document.getElementById("city_selec_form").addEventListener("submit", function(e
             marker = L.marker([coordinates[0], coordinates[1]])
                 .bindPopup(`${place_name}`.toUpperCase())
                 .addTo(map);
-            
+            console.log(meteo_data)
 
             })
         })  
