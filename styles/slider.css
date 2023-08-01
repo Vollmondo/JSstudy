@@ -10,12 +10,15 @@
   }
 
   .slider__item-wrapper{
-    height: 450px;;
+    height: 450px;
+    width: 900px;
 }
 
   .slider__item {
     flex: 0 0 100%;
     max-width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
   .slider__control {
