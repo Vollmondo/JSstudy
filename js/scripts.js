@@ -940,7 +940,7 @@ function clearForm() {
     map.removeLayer(marker);
     markerCount = 0;
 
-    //сброс графика highcharts
+    meteo_data = [];
     let meteoDiv = document.getElementById("meteo");
     meteoDiv.innerHTML = '';
 }
