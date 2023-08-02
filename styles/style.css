@@ -15,21 +15,56 @@ body {
     width: 1200px;
 }
 
+a{
+    text-decoration: none;
+}
+
 hr{
     margin: 0;
 }
 
 .header{
     height: 100px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .logo-div{
     margin: 10px;
+    height: 100px;
 }
 
 .logo{
     height: 100px;
 }
+
+.auth-block{
+    margin: 25px 45px;
+    height: 50px;
+	position: relative;	
+}
+
+
+.auth-form {
+	display: none;
+    position: absolute;
+	z-index: 10000000000;
+}
+
+#login-button{
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.1);
+    opacity: 0.5;
+    box-shadow: 3px 3px 6px #000;
+}
+
+.auth-img{
+    height: 40px;
+    width: 45px;
+}
+
 
 main{
     padding: 10px;
@@ -165,6 +200,10 @@ p{
     text-align: center;
 
 }
+
+.city_select::placeholder{
+    color: #000;
+  }
 
 .charts{
     width: 100%;

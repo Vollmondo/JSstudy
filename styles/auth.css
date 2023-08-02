@@ -1,0 +1,207 @@
+#auth-container{
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1000000000;
+    margin: auto;
+    width: 300px;
+    height: 280px;
+    border-radius: 5px;
+    background: rgba(0,0,0,0.8);
+    box-shadow: 1px 1px 50px #000;
+    display: none;
+}
+  
+.close-btn{
+    position: absolute;
+    cursor: pointer;
+    font-family: 'Open Sans Condensed', sans-serif;
+    line-height: 18px;
+    top: 3px;
+    right: 3px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border-radius: 10px;
+    opacity: .2;
+    -webkit-transition: all 2s ease-in-out;
+    -moz-transition: all 2s ease-in-out;
+    -o-transition: all 2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.auth-login-h1{
+    width: 100%;
+    text-align: center;
+    font-size: 18pt;
+    color: #ddd;
+}
+
+.close-btn-img{
+    height: 20px;
+    width: 20px;
+    border-radius: 3px;
+}
+
+.close-btn:hover{
+    opacity: .5;
+}
+
+.auth-form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.upper-auth-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.auth-placeholder{
+    margin: 9px auto;
+    width: 70%;
+    font-size: 14px;
+    color: #000;
+    padding: 8px;
+    border-radius: 6px;
+    border: none;
+    background: rgba(221,221,221,0.8);
+}
+
+.auth-placeholder::placeholder{
+    color: #000;
+  }
+
+.auth-placeholder:focus{
+    outline: none;
+    box-shadow: 3px 3px 10px #333;
+    background: rgba(0,0,0,0.8);
+    color: #ddd;
+}
+
+.lower-auth-div{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+::-webkit-input-placeholder {
+     color: #ddd;  }
+:-moz-placeholder {
+     color: red;  }
+::-moz-placeholder {
+     color: red;  }
+:-ms-input-placeholder {  
+     color: #333;  }
+  
+a:hover{
+    opacity: 0.7;
+  }
+  
+#remember-container{
+    position: relative;
+    margin: 0 20px;
+}
+  
+.checkbox {
+    position: relative;
+    cursor: pointer;
+    -webkit-appearance: none;
+    padding: 5px;
+    border-radius: 4px;
+    background: rgba(221,221,221,0.8);
+    display: inline-block;
+    width: 16px;
+    height: 15px;
+  }
+  
+.checkbox:checked:active {
+    box-shadow: 0 1px 2px rgba(221,221,221,0.8), inset 0px 1px 3px rgba(0,0,0,0.1);
+  }
+  
+.checkbox:checked {
+    background: rgba(221,221,221,0.8);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.5);
+    color: #000;
+  }
+  
+.checkbox:checked:after {
+    content: '\2714';
+    font-size: 10px;
+    position: absolute;
+    top: 0px;
+    left: 4px;
+    color: #000;
+  }
+  
+#remember{
+    position: absolute;
+    font-size: 13px;
+    font-family: 'Hind', sans-serif;
+    color: rgba(221,221,221,0.8);
+    top: 2px;
+  }
+  
+#forgotten{
+    position: absolute;
+    font-size: 13px;
+    font-family: 'Hind', sans-serif;
+    color: rgba(221,221,221,0.2);
+    right: 0px;
+    top: 2px;
+    
+    cursor: pointer;
+    -webkit-transition: all 2s ease-in-out;
+    -moz-transition: all 2s ease-in-out;
+    -o-transition: all 2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+  
+#forgotten:hover{
+    color: rgba(221,221,221,0.8);
+  }
+  
+#forgotten-container{
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1000000000;
+    margin: auto;
+    width: 260px;
+    height: 200px;
+    border-radius: 5px;
+    background: rgba(0,0,0,0.8);
+    box-shadow: 1px 1px 50px #000;
+    display: none;
+}
+
+.registration-link{
+    color: rgba(221,221,221,0.8);
+    text-decoration: none;
+    margin: 9px auto;
+    text-transform:uppercase;
+    font-size: 7pt;
+}
+
+.registration-link:visited{
+    color: rgba(221,221,221,0.8);
+    text-decoration: none;
+
+}
+
+.orange-btn{
+    background: rgba(255, 87, 87, 0.5);
+    width: 70%;
+    display: block;
+    margin: 9px auto;
+    font-size: 17px;
+    color: #fff;
+    padding: 8px;
+    border-radius: 6px;
+    border: none;
+    text-align: center;
+  }
