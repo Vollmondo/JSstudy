@@ -39,7 +39,7 @@
                         <div class="upper-auth-div">
                             <input id="user_name" class="auth-placeholder" type="email" name="email" placeholder="Логин">
                             <input id="user_pass" class="auth-placeholder" type="password" name="pass" placeholder="Пароль">
-                            <a href="#" class="orange-btn">Войти</a>
+                            <button type="submit" class="orange-btn">Войти</button>
                         </div>
                         <div id="remember-container">
                             <input type="checkbox" id="checkbox-2-1" class="checkbox" checked="checked"/>
@@ -56,8 +56,8 @@
                         <img class="close-btn-img" src="img/661783.png"></img>
                     </span>
                     <form class="auth-form">
-                        <input class="auth-placeholder" type="email" name="email" placeholder="Логин">
-                        <a href="#" class="orange-btn">Восстановить&nbsp;пароль</a>
+                        <input id="forgotten_user_name" class="auth-placeholder" type="email" name="email" placeholder="Логин">
+                        <button type="submit" class="orange-btn">Восстановить&nbsp;пароль</button>
                     </form>
                 </div>
             </div>
@@ -136,82 +136,7 @@
         <p>lorem ipsum&#169; 2023</p>
     </div>
     <script src="js/scripts.js"></script>
-    <script>
-        document.getElementById('login-button').addEventListener('click', function() {
-  var loginButton = document.getElementById('login-button');
-  var container = document.getElementById('auth-container');
-  
-  loginButton.style.opacity = '0';
-  container.style.opacity = '0';
-  container.style.transform = 'scale(0)';
-  
-  setTimeout(function() {
-    container.style.display = 'block';
-    container.style.transition = 'opacity 0.4s, transform 0.4s';
-    container.style.opacity = '1';
-    container.style.transform = 'scale(1)';
-  }, 500);
-  console.log (user_auth_data)
-
-});
-
-let user_name = document.getElementById("user_name").value;
-let user_pass = document.getElementById("user_pass").value;
-let user_auth_data = {user_name: user_pass}
-var jsonData = JSON.stringify(user_auth_data);
-
-document.querySelector('#auth-container .close-btn').addEventListener('click', function() {
-    var container = document.getElementById('auth-container');
-    var loginButton = document.getElementById('login-button');
-    
-    container.style.transform = 'scale(1)';
-    container.style.transition = 'transform 0.4s';
-    
-    setTimeout(function() {
-        container.style.transition = 'opacity 0.8s';
-        container.style.opacity = '0';
-        
-        setTimeout(function() {
-            container.style.display = 'none';
-            loginButton.style.opacity = '1';
-        }, 800);
-    }, 400);
-});
-
-document.querySelector('#forgotten-container .close-btn').addEventListener('click', function() {
-    var forgottenContainer = document.getElementById('forgotten-container');
-    var loginButton = document.getElementById('login-button');
-
-    forgottenContainer.style.transform = 'scale(1)';
-    forgottenContainer.style.transition = 'transform 0.4s';
-    
-    setTimeout(function() {
-        forgottenContainer.style.transition = 'opacity 0.8s';
-        forgottenContainer.style.opacity = '0';
-        
-        setTimeout(function() {
-            forgottenContainer.style.display = 'none';
-            loginButton.style.opacity = '1';
-
-        }, 800);
-    }, 400);
-});
-
-document.getElementById('forgotten').addEventListener('click', function() {
-    var container = document.getElementById('auth-container');
-    var forgottenContainer = document.getElementById('forgotten-container');
-    
-    container.style.transition = 'opacity 0.8s';
-    container.style.opacity = '0';
-  
-    setTimeout(function() {
-        container.style.display = 'none';
-        forgottenContainer.style.display = 'block';
-        forgottenContainer.style.transition = 'opacity 0.4s';
-        forgottenContainer.style.opacity = '1';
-    }, 400);
-});
-    </script>
+    <script src="js/auth.js"></script>
 </body>
 </html>
 
