@@ -110,7 +110,6 @@ a:hover{
 .checkbox {
     position: relative;
     cursor: pointer;
-    -webkit-appearance: none;
     padding: 5px;
     border-radius: 4px;
     background: rgba(221,221,221,0.8);
