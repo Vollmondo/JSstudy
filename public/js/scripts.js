@@ -1,3 +1,5 @@
+let meteo_data = [];
+
 function createNode(element) {
     return document.createElement(element);
 }
@@ -499,8 +501,7 @@ function meteo_chart(){
                 }
             }
         });
-        console.log(meteo_data)
-
+        return meteo_data
     };
     
 
@@ -834,7 +835,6 @@ function meteo_chart(){
      * with yr.no's specific data format
      */
     Meteogram.prototype.parseYrData = function () {
-    console.log("hi")
     
         let pointStart;
 
@@ -894,10 +894,8 @@ function meteo_chart(){
         this.createChart();
     };
  
-    if (!location.hash) {
-        location.hash = `https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${coordinates[1]}&lon=${coordinates[0]}`;
+    location.hash = `https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${coordinates[1]}&lon=${coordinates[0]}`;
 
-    }
     const url = location.hash.substr(1);
     Highcharts.ajax({
         url,
@@ -936,13 +934,16 @@ function clearForm() {
     ctx2.setAttribute('class', 'chart_canvas');
     append(chart2_div, ctx2);
     
+    coordinates = [];
+
     map.setView([0, 0], 1);
     map.removeLayer(marker);
     markerCount = 0;
-
+    console.log(meteo_data)
     meteo_data = [];
     let meteoDiv = document.getElementById("meteo");
     meteoDiv.innerHTML = '';
+    document.getElementById("city").value = null;
 }
 
 function addLabels(coordinates) {
@@ -980,7 +981,6 @@ let ctx1 = document.getElementById('Chart1');
 let ctx2 = document.getElementById('Chart2');
 const chart1_div = document.getElementById('chart1-div');
 const chart2_div = document.getElementById('chart2-div');
-let meteo_data = [];
 let coordinates = [];
 let map = L.map('map', {center: [0, 0], zoom: 1})
 let marker = L.marker([], {draggable:true});
@@ -1300,7 +1300,5 @@ document.getElementById("city_selec_form").addEventListener("submit", function(e
             marker = L.marker([coordinates[0], coordinates[1]])
                 .bindPopup(`${place_name}`.toUpperCase())
                 .addTo(map);
-            console.log(meteo_data)
-
             })
         })  

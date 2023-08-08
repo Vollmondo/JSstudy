@@ -215,6 +215,7 @@ p{
 .info-block{
     display: flex;
     justify-content: center;
+    padding-left: 5px;
 }
 
 .highcharts-figure{
