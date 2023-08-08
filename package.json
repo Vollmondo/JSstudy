@@ -1,0 +1,23 @@
+{
+  "name": "jsstudy",
+  "version": "1.0.0",
+  "description": "A simple pet-project made on vanilla JS for study purposes.\r Based on the following libs: leaflet, charts...",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vollmondo/JSstudy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vollmondo/JSstudy/issues"
+  },
+  "homepage": "https://github.com/Vollmondo/JSstudy#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
