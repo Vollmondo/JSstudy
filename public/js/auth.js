@@ -1,104 +1,62 @@
-document.getElementById('login-button').addEventListener('click', function() {
-    var loginButton = document.getElementById('login-button');
-    var container = document.getElementById('auth-container');
+(function() {
+    var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+                                window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+    window.requestAnimationFrame = requestAnimationFrame;
+  })();
+  
+  $('#loginForm').submit(function(e) {
+    e.preventDefault();
+    $(".cube").css({
+      transform: 'rotateX(90deg) translateZ(-110px)'
+    });
+  
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    canvas.width = 300;
+    canvas.height = 345;
+    var x = canvas.width / 2;
+    var y = canvas.height / 2;
+  
+    var radius = 100;
+    var endPercent = 102;
+    var curPerc = 0;
+    var circ = Math.PI * 2;
+    var quart = Math.PI / 2;
+    var green = '#17BD96'
     
-    loginButton.style.opacity = '0';
-    container.style.opacity = '0';
-    container.style.transform = 'scale(0)';
+    context.lineWidth = 5;
+    context.fillStyle = green;
+    context.strokeStyle = green;
+  
+    function animate(current) {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      context.beginPath();
+      context.arc(x, y, radius, -(quart), ((circ) * current) - quart, false);
+      context.stroke();
+      curPerc+=2;
+      if (curPerc < endPercent) {
+        requestAnimationFrame(function() {
+          animate(curPerc / 100);
+        });
+      } else {
+        $("#fill").addClass("animate");
+      }
+    }
     
-    setTimeout(function() {
-        container.style.display = 'block';
-        container.style.transition = 'opacity 0.4s, transform 0.1s';
-        container.style.opacity = '1';
-        container.style.transform = 'scale(1)';
-    }, 500);
+    setTimeout(animate, 1000);
+  });
+  
+  window.addEventListener('webkitAnimationEnd', function(event) { 
+    $(".success").css({'opacity': 1})
+  });
 
-});
-
-document.querySelector('#auth-container .close-btn').addEventListener('click', function() {
-    var container = document.getElementById('auth-container');
-    var loginButton = document.getElementById('login-button');
-    
-    container.style.transform = 'scale(1)';
-    container.style.transition = 'transform 0.1s';
-    
-    setTimeout(function() {
-        container.style.transition = 'opacity 0.8s';
-        container.style.opacity = '0';
-        
-        setTimeout(function() {
-            container.style.display = 'none';
-            loginButton.style.opacity = '1';
-        }, 800);
-    }, 400);
-});
-
-document.querySelector('#forgotten-container .close-btn').addEventListener('click', function() {
-    var forgottenContainer = document.getElementById('forgotten-container');
-    var loginButton = document.getElementById('login-button');
-
-    forgottenContainer.style.transform = 'scale(1)';
-    forgottenContainer.style.transition = 'transform 0.1s';
-    
-    setTimeout(function() {
-        forgottenContainer.style.transition = 'opacity 0.8s';
-        forgottenContainer.style.opacity = '0';
-        
-        setTimeout(function() {
-            forgottenContainer.style.display = 'none';
-            loginButton.style.opacity = '1';
-
-        }, 800);
-    }, 400);
-});
-
-document.getElementById('forgotten').addEventListener('click', function() {
-    var container = document.getElementById('auth-container');
-    var forgottenContainer = document.getElementById('forgotten-container');
-    
-    container.style.transition = 'opacity 0.8s';
-    container.style.opacity = '0';
-
-    setTimeout(function() {
-        container.style.display = 'none';
-        forgottenContainer.style.display = 'block';
-        forgottenContainer.style.transition = 'opacity 0.4s';
-        forgottenContainer.style.opacity = '1';
-    }, 400);
-});
-
-document.querySelector('#auth-container .orange-btn').addEventListener('click', function(event) {
-    event.preventDefault(); 
-
-    var user_name = document.getElementById("user_name").value;
-    var user_pass = document.getElementById("user_pass").value;
-    var user_auth_data = {
-        user_name: user_name,
-        user_pass: user_pass
-    };
-    
-    var jsonData = JSON.stringify(user_auth_data);
-    console.log(jsonData)
-
-    /*//пост запрос на сервер
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://127.0.0.1:5500/", true);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            // Обработка успешного ответа от сервера
-            console.log(xhr.responseText);
-        } else if (xhr.readyState === 4) {
-            // Обработка ошибки
-            console.error(xhr.statusText);
-        }
-    };
-    xhr.send(jsonData);*/
-});
-
-document.querySelector('#forgotten-container .orange-btn').addEventListener('click', function(event) {
-    event.preventDefault();
-    var forgotten_user_name = document.getElementById("forgotten_user_name").value;
-    var jsonData = JSON.stringify(forgotten_user_name);
-    console.log(jsonData)
-});
+  /*var user_name = document.getElementById("user_name").value;
+  var user_pass = document.getElementById("user_pass").value;
+  var user_auth_data = {
+      user_name: user_name,
+      user_pass: user_pass
+  };
+  
+  var jsonData = JSON.stringify(user_auth_data);
+  console.log(jsonData)*/
+  

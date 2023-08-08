@@ -3,9 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/auth.css">
     <title>Авторизация</title>
 </head>
 <body>
-    <h1>Страница авторзации</h1>
+    <div class="grid">
+        <!-- Не забыть потом убрать временную ссылочку-->
+        <span><a href="../main.html"><b>временная ссылка</b> для входа на основную страничку</a></span>
+        <div class="cube">
+            <div class="item">
+                <ul class="tabs">
+                    <li>
+                        <input type="radio" name="tabs" id="tab1" checked="checked"/>
+                        <label class="nav" for="tab1">Login</label>
+                        <div class="tab-content" id="loginTabContent">
+                        <form id="loginForm">
+                            <label class="frm" for="email">Email Address</label>
+                            <input type="email" name="login" required="required"/>
+                            <label class="frm" for="password">Password</label>
+                            <input type="password" name="password" required="required"/>
+                            <input type="checkbox" name="keep"/>
+                            <label class="frm" for="keep">Keep me logged in.</label>
+                            <button id="loginBtn" type="submit">Login</button>
+                            <span><a href="#">Forgot your password?</a></span>
+                        </form>
+                        </div>
+                    </li>
+                    <li>
+                        <input type="radio" name="tabs" id="tab2"/>
+                        <label class="nav" for="tab2">Register</label>
+                        <div class="tab-content" id="signupTabContent">
+                        <form>
+                            <label class="frm" for="email">Email Address</label>
+                            <input type="email" name="login" required="required"/>
+                            <label class="frm" for="password">Password</label>
+                            <input type="password" name="password" required="required"/>
+                            <label class="frm" for="password">Confirm Password</label>
+                            <input type="password" name="password" required="required"/>
+                            <button id="loginBtn" type="submit">Register</button>
+                        </form>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="done">
+                <canvas id="canvas"></canvas>
+                <div id="fill"></div>
+                <div class="success"><span>Login Successful</span><i class="fa fa-check"></i></div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/auth.js"></script>
 </body>
 </html>
