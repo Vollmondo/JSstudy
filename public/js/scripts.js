@@ -939,7 +939,6 @@ function clearForm() {
     map.setView([0, 0], 1);
     map.removeLayer(marker);
     markerCount = 0;
-    console.log(meteo_data)
     meteo_data = [];
     let meteoDiv = document.getElementById("meteo");
     meteoDiv.innerHTML = '';
