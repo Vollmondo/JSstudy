@@ -1,3 +1,5 @@
+//import { normalizeLongitude } from "./meteo/long_normalize.js";
+
 let meteo_data = [];
 
 function createNode(element) {
@@ -963,7 +965,7 @@ function addLabels(coordinates) {
     return labels;
 }
 
-function normalizeLongitude(longitude) {
+/* function normalizeLongitude(longitude) {
     var normalizedLongitude = longitude % 360;
     if (normalizedLongitude > 180) {
       normalizedLongitude -= 360;
@@ -971,7 +973,7 @@ function normalizeLongitude(longitude) {
       normalizedLongitude += 360;
     }
     return normalizedLongitude;
-  }
+  } */
 
 const air_pollution_dateTime_div= document.getElementById('air-pollution-dateTime');
 const air_pollution_pm2_5_div= document.getElementById('air-pollution-pm2_5')
@@ -1301,3 +1303,4 @@ document.getElementById("city_selec_form").addEventListener("submit", function(e
                 .addTo(map);
             })
         })  
+        
