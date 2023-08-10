@@ -4,6 +4,7 @@
   "description": "A simple pet-project made on vanilla JS for study purposes.\r Based on the following libs: leaflet, charts...",
   "main": "index.js",
   "scripts": {
+    "start": "npx nodemon server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +19,11 @@
   },
   "homepage": "https://github.com/Vollmondo/JSstudy#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "mongoose": "^7.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }
