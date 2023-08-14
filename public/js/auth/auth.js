@@ -1,26 +1,37 @@
 (function() {
-  var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+  const requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
                               window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
   window.requestAnimationFrame = requestAnimationFrame;
 })();
 
 document.getElementById('loginForm').addEventListener('submit', function(e) {
   e.preventDefault();
+
+  const user_name = document.getElementById("user_name").value;
+  const user_pass = document.getElementById("user_pass").value;
+  const user_auth_data = {
+      user_name: user_name,
+      user_pass: user_pass
+  };
+  
+  const jsonData = JSON.stringify(user_auth_data);
+  console.log(jsonData)
+
   document.querySelector(".cube").style.transform = 'rotateX(90deg) translateZ(-110px)';
 
-  var canvas = document.getElementById('canvas');
-  var context = canvas.getContext('2d');
+  const canvas = document.getElementById('canvas');
+  const context = canvas.getContext('2d');
   canvas.width = 300;
   canvas.height = 345;
-  var x = canvas.width / 2;
-  var y = canvas.height / 2;
+  const x = canvas.width / 2;
+  const y = canvas.height / 2;
 
-  var radius = 100;
-  var endPercent = 102;
-  var curPerc = 0;
-  var circ = Math.PI * 2;
-  var quart = Math.PI / 2;
-  var green = '#17BD96'
+  const radius = 100;
+  const endPercent = 102;
+  let curPerc = 0;
+  const circ = Math.PI * 2;
+  const quart = Math.PI / 2;
+  const green = '#17BD96'
 
   context.lineWidth = 5;
   context.fillStyle = green;
@@ -47,14 +58,5 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
 window.addEventListener('webkitAnimationEnd', function(event) { 
   document.querySelector(".success").style.opacity = 1;
 });
-
-  /*var user_name = document.getElementById("user_name").value;
-  var user_pass = document.getElementById("user_pass").value;
-  var user_auth_data = {
-      user_name: user_name,
-      user_pass: user_pass
-  };
   
-  var jsonData = JSON.stringify(user_auth_data);
-  console.log(jsonData)*/
   

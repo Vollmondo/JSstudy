@@ -17,7 +17,7 @@ exports.create = (req, res) => {
         })
     }
 
-    const eventWorld = new EventWorld({
+    const eventWorld = new EventsWorld({
         name: req.body.name,
         description: req.body.description
     })

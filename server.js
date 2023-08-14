@@ -25,7 +25,7 @@ mongoose.connect(dbConfig.url, {
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.get('/', (request, response) => {
-    response.sendFile(`${__dirname}/public/auth/auth.html`)
+    response.sendFile(`${__dirname}/public/html/auth.html`)
 })
 
 app.get('/main/', (request, response) => {

@@ -27,6 +27,7 @@ function airQualityFetchProcess(data){
                 minute: '2-digit'
             });            
             let p = createNode('p');
+            p.className = "air-pollution-dateTime";
             let hr = createNode('hr')
             p.innerHTML = `${formattedDate} `;                
             append(air_pollution_dateTime_div, p);
@@ -36,6 +37,7 @@ function airQualityFetchProcess(data){
         // преедаем данные по частицам pm2,5 в таблицу    
         for (let i = 0; i < air_pollution_pm2_5.length; i++) {
             let p = createNode('p');
+            p.className = "air-pollution-pm2_5";
             let hr = createNode('hr')
             p.innerHTML = `${air_pollution_pm2_5[i]} `;                
             append(air_pollution_pm2_5_div, p);
@@ -45,6 +47,7 @@ function airQualityFetchProcess(data){
         // преедаем данные по частицам pm10 в таблицу
         for (let i = 0; i < air_pollution_pm10.length; i++) {
             let p = createNode('p');
+            p.className = "air-pollution-pm10";
             let hr = createNode('hr')
             p.innerHTML = `${air_pollution_pm10[i]} `;                
             append(air_pollution_pm10_div, p);

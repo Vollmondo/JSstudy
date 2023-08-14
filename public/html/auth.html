@@ -19,9 +19,9 @@
                         <div class="tab-content" id="loginTabContent">
                         <form id="loginForm">
                             <label class="frm" for="email">Email Address</label>
-                            <input type="email" name="login" required="required"/>
+                            <input id="user_name" type="email" name="login" required="required"/>
                             <label class="frm" for="password">Password</label>
-                            <input type="password" name="password" required="required"/>
+                            <input id="user_pass" type="password" name="password" required="required"/>
                             <input type="checkbox" name="keep"/>
                             <label class="frm" for="keep">Keep me logged in.</label>
                             <button id="loginBtn" type="submit">Login</button>
@@ -33,14 +33,14 @@
                         <input type="radio" name="tabs" id="tab2"/>
                         <label class="nav" for="tab2">Register</label>
                         <div class="tab-content" id="signupTabContent">
-                        <form>
+                        <form id="regForm">
                             <label class="frm" for="email">Email Address</label>
-                            <input type="email" name="login" required="required"/>
+                            <input id="user_reg_name" type="email" name="login" required="required"/>
                             <label class="frm" for="password">Password</label>
-                            <input type="password" name="password" required="required"/>
+                            <input id="user_reg_pass" type="password" name="password" required="required"/>
                             <label class="frm" for="password">Confirm Password</label>
-                            <input type="password" name="password" required="required"/>
-                            <button id="loginBtn" type="submit">Register</button>
+                            <input id="user_reg_pass_confirm" type="password" name="password" required="required"/>
+                            <button id="regBtn" type="submit">Register</button>
                         </form>
                         </div>
                     </li>
@@ -53,6 +53,8 @@
             </div>
         </div>
     </div>
-    <script src="../js/auth.js"></script>
+    <script type="module" src="../js/auth/auth.js"></script>
+    <script type="module" src="../js/auth/reg.js"></script>
+
 </body>
 </html>
