@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/slider.css">
+    <link rel="stylesheet" href="styles/temp_converter.css">
     <link rel="stylesheet" href="styles/media.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
@@ -26,13 +27,35 @@
     </div>
     <main>
         <div class="conteiner">
-            <div class="city_block">
-                <form id="city_selec_form">
-                    <input class="city_select" id="city"  placeholder="Введите&nbsp;название&nbsp;города">
-                    <button type="submit" class="city_btn" id="city_select_btn">Получить&nbsp;данные</button>
-                </form>
-                <button type="button" id="clearbutton" class="button_clear_form">Очистить результаты</button>
-                
+            <div class="sidebar">
+                <div class="city_block">
+                    <form id="city_selec_form">
+                        <input class="city_select" id="city"  placeholder="Введите&nbsp;название&nbsp;города">
+                        <button type="submit" class="city_btn" id="city_select_btn">Получить&nbsp;данные</button>
+                    </form>
+                    <button type="button" id="clearbutton" class="button_clear_form">Очистить результаты</button>  
+                </div>
+                <div class="temp-converter-block">
+                    <form class="temp-converter-form">
+                        <h3 class="temp-converter-label">Конвертер для&nbsp;температуры</h3>
+                        <div class="temp-converter-input-block">
+                            <input class="city_select" id="temp-converter-input" placeholder="Введите&nbsp;температуру">
+                            <div class="temp-converter-select-wrapper">
+                                <select id="temp-convert-from" class="temp-convert from" name="temp">
+                                    <option value="Celsius" selected="selected">C&deg;</option>
+                                    <option value="Fahrenheit" >F&deg;</option>                        
+                                </select>
+                                <img class="converter-img" src="img/arr_convert.png" alt="" id="rotateButton" onclick="rotateImage()" >
+                                <select id="temp-convert-to" class="temp-convert to" name="temp">
+                                    <option value="Celsius" >C&deg;</option>
+                                    <option value="Fahrenheit" selected="selected">F&deg;</option>                        
+                                </select>
+                            </div>    
+                            <button type="submit" class="city_btn" id="temp-convert-btn">Перевести</button>
+                        </div>
+                        <div class="temp-converter-rezult" id="temp-converter-rezult"></div>
+                    </form>
+                </div>
             </div>
             <div class="main-content" style="width: 1050px;">
                 <div class="slider">
@@ -96,8 +119,9 @@
     <div class="footer">
         <p>lorem ipsum&#169; 2023</p>
     </div>
-    <script type="module" src="js/scripts.js"></script>
-    <script src="js/auth.js"></script>
+    <script async type="module" src="js/scripts.js"></script>
+    <script async src="js/meteo/tempConverter.js"></script>
+    <script async src="js/auth.js"></script>
 </body>
 </html>
 
