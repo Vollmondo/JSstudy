@@ -10,13 +10,13 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
   const user_name = document.getElementById("user_name").value;
   const user_pass = document.getElementById("user_pass").value;
   const user_auth_data = {
-      user_name: user_name,
-      user_pass: user_pass
+    username: user_name,
+    password: user_pass
   };
-  
+
   const jsonData = JSON.stringify(user_auth_data);
   console.log(jsonData)
-
+  
   fetch('/login', {
     method: 'POST',
     headers: {
@@ -26,11 +26,9 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
   })
   .then(response => response.json())
   .then(data => {
-    // Обработка ответа от сервера
     console.log(data);
   })
   .catch(error => {
-    // Обработка ошибок
     console.error(error);
   });
 

@@ -1,9 +1,9 @@
-module.export = (app) => {
-    const auth = require('../controllers/auth.controller')
+const express = require('express');
+const router = express.Router();
+const authController = require('../controllers/authController');
 
-    // Авторизации
-    app.post('/login', authController.login);
+router.post('/login', authController.login);
 
-    // Регистрация
-    app.post('/register', authController.register);
-}
+router.post('/register', authController.register);
+
+module.exports = router;
