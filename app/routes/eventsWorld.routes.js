@@ -15,4 +15,5 @@ module.export = (app) => {
 
     //удалить событие
     app.delete('/event/:id', eventsWorld.delete)
+
 }

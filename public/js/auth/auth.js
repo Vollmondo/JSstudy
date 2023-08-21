@@ -17,6 +17,23 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
   const jsonData = JSON.stringify(user_auth_data);
   console.log(jsonData)
 
+  fetch('/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(user_auth_data)
+  })
+  .then(response => response.json())
+  .then(data => {
+    // Обработка ответа от сервера
+    console.log(data);
+  })
+  .catch(error => {
+    // Обработка ошибок
+    console.error(error);
+  });
+
   document.querySelector(".cube").style.transform = 'rotateX(90deg) translateZ(-110px)';
 
   const canvas = document.getElementById('canvas');

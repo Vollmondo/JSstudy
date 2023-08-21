@@ -2,6 +2,7 @@ const bodyParser = require('body-parser')
 const express = require('express')
 const app = express()
 const path = require('path')
+const User = require ('./app/models/user.model')
 
 app.use(bodyParser.urlencoded({extended: true}))
 
@@ -13,8 +14,9 @@ const { error } = require('console')
 
 mongoose.Promise = global.Promise
 
-mongoose.connect(dbConfig.url, {
-    useNewUrlParser: true
+/mongoose.connect(dbConfig.url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 }).then(() =>{
     console.log('Успешное подключение к базе данных')
 }).catch((error) => {

@@ -1,46 +1,125 @@
-const EventsWorld = require('../models/eventsWorld.model')
+const EventsWorld = require('../models/eventsWorld.model');
 
-//создание события
+// Создание события
 exports.create = (req, res) => {
-    //валидация данных
-    if (!req.body.name){
-        return res.status(400).send({
-            message: 'Наименование события не может быть пустым',
-            success: false
-        })
-    }
+  // Валидация данных
+  if (!req.body.name || !req.body.description) {
+    return res.status(400).json({
+      message: 'Наименование и описание события должны быть заполнены',
+      success: false
+    });
+  }
 
-    if (!req.body.description){
-        return res.status(400).send({
-            message: 'Наименование события не может быть пустым',
-            success: false
-        })
-    }
+  const event = new EventsWorld({
+    name: req.body.name,
+    description: req.body.description
+  });
 
-    const eventWorld = new EventsWorld({
-        name: req.body.name,
-        description: req.body.description
-    })
-
-    eventWorld.save()
+  event.save()
     .then(data => {
-        res.send(data)
-    }).catch((error) =>{
-        res.status(500).send({
-            message: `Данные не записались: ${error.message}`,
-            success: false
-        })
+      res.json(data);
     })
-}
+    .catch(error => {
+      res.status(500).json({
+        message: `Ошибка при создании события: ${error.message}`,
+        success: false
+      });
+    });
+};
 
-//получение всех событий
-exports.findAll = (req, res) => {}
+// Получение всех событий
+exports.findAll = (req, res) => {
+  EventsWorld.find()
+    .then(data => {
+      res.json(data);
+    })
+    .catch(error => {
+      res.status(500).json({
+        message: `Ошибка при получении событий: ${error.message}`,
+        success: false
+      });
+    });
+};
 
-//получить определенное событие
-exports.findOne = (req, res) => {}
+// Получение определенного события по его ID
+exports.findOne = (req, res) => {
+  const eventId = req.params.id;
 
-//обновить информацию о событии
-exports.update = (req, res) => {}
+  EventsWorld.findById(eventId)
+    .then(data => {
+      if (data) {
+        res.json(data);
+      } else {
+        res.status(404).json({
+          message: 'Событие не найдено',
+          success: false
+        });
+      }
+    })
+    .catch(error => {
+      res.status(500).json({
+        message: `Ошибка при получении события: ${error.message}`,
+        success: false
+      });
+    });
+};
 
-//удалить событие
-exports.delete = (req, res) => {}
+// Обновление информации о событии
+exports.update = (req, res) => {
+  const eventId = req.params.id;
+
+  // Валидация данных
+  if (!req.body.name || !req.body.description) {
+    return res.status(400).json({
+      message: 'Наименование и описание события должны быть заполнены',
+      success: false
+    });
+  }
+
+  EventsWorld.findByIdAndUpdate(eventId, {
+    name: req.body.name,
+    description: req.body.description
+  }, { new: true })
+    .then(data => {
+      if (data) {
+        res.json(data);
+      } else {
+        res.status(404).json({
+          message: 'Событие не найдено',
+          success: false
+        });
+      }
+    })
+    .catch(error => {
+      res.status(500).json({
+        message: `Ошибка при обновлении события: ${error.message}`,
+        success: false
+      });
+    });
+};
+
+// Удаление события
+exports.delete = (req, res) => {
+  const eventId = req.params.id;
+
+  EventsWorld.findByIdAndDelete(eventId)
+    .then(data => {
+      if (data) {
+        res.json({
+          message: 'Событие успешно удалено',
+          success: true
+        });
+      } else {
+        res.status(404).json({
+          message: 'Событие не найдено',
+          success: false
+        });
+      }
+    })
+    .catch(error => {
+      res.status(500).json({
+        message: `Ошибка при удалении события: ${error.message}`,
+        success: false
+      });
+    });
+};
